@@ -304,7 +304,8 @@ angular.module('ui.bootstrap.datetimepicker', [])
             var tempDate = new Date(unixDate);
             var newDate = new Date(tempDate.getTime() + (tempDate.getTimezoneOffset() * 60000));
             if (configuration.dropdownSelector) {
-              jQuery(configuration.dropdownSelector).toggle();
+ jQuery(configuration.dropdownSelector).dropdown('toggle');
+                jQuery('.dropdown.open').removeClass('open');
             }
             if (angular.isFunction(scope.onSetTime)) {
               scope.onSetTime(newDate, scope.ngModel);

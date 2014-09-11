@@ -33,7 +33,7 @@
                 <p>Formatted Date: {{ data.embeddedYear | date:'yyyy-MM-dd' }}</p>
 
                 <datetimepicker data-ng-model="data.embeddedYear"
-                                data-datetimepicker-config="{ startView: 'year', minView: 'year'}"></datetimepicker>
+                                data-datetimepicker-config="{ startView: 'year', minView: 'day', outputFormat:'DD-MM-YYYY'}"></datetimepicker>
             </div>
         </div>
         <div class="col-sm-6">

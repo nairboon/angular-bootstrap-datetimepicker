@@ -19,13 +19,14 @@ angular.module('ui.bootstrap.datetimepicker', [])
     minuteStep: 5,
     minView: 'minute',
     startView: 'day',
-    weekStart: 0
+    weekStart: 0,
+    outputFormat: 'yyyy-MM-dd hh:mm:ss'
   })
   .directive('datetimepicker', ['dateTimePickerConfig', function (defaultConfig) {
     "use strict";
 
     var validateConfiguration = function (configuration) {
-      var validOptions = ['startView', 'minView', 'minuteStep', 'dropdownSelector', 'weekStart'];
+      var validOptions = ['startView', 'minView', 'minuteStep', 'dropdownSelector', 'weekStart','outputFormat'];
 
       for (var prop in configuration) {
         if (configuration.hasOwnProperty(prop)) {
@@ -308,7 +309,8 @@ angular.module('ui.bootstrap.datetimepicker', [])
             if (angular.isFunction(scope.onSetTime)) {
               scope.onSetTime(newDate, scope.ngModel);
             }
-            scope.ngModel = newDate;
+            var formatedDate = moment(newDate).format(configuration.outputFormat)
+            scope.ngModel = formatedDate;
             return dataFactory[scope.data.currentView](unixDate);
           }
         };
